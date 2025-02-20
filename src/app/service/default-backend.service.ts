@@ -10,14 +10,19 @@ export class DefaultBackendService {
 
   
   
-  public consumirBackend() {
+  public getData(alertas:boolean) {
 
     const token = localStorage.getItem('jwt');
-
     let httpOptions = {
       // headers: new HttpHeaders().set('authenticate', `Bearer ${token}`)
     };
 
-    return this.http.get('http://localhost:8081/usuarios', httpOptions);
+    if(alertas){
+      return this.http.get('http://localhost:8282/alertas', httpOptions);
+
+    }
+
+    return this.http.get('http://localhost:8282/senales', httpOptions);
   }
+  
 }

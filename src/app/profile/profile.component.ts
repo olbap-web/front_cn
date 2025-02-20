@@ -35,7 +35,10 @@ export class ProfileComponent implements OnInit {
     });
   }
   llamarBackend(): void {
-    this.backendService.consumirBackend().subscribe(response => {
+
+    let alertas =true;
+
+    this.backendService.getData(alertas).subscribe(response => {
       this.responseBackend = response;
     });
   }

@@ -18,11 +18,10 @@ export class DefaultBackendService {
     };
 
     if(alertas){
-      return this.http.get('http://localhost:8282/alertas', httpOptions);
+      return this.http.get('http://localhost:8282/alertas/', httpOptions);
 
     }
 
-    return this.http.get('http://localhost:8282/senales', httpOptions);
+    return this.http.get('http://localhost:8282/senales/', httpOptions);
   }
-  
 }

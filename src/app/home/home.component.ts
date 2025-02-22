@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
+import { DefaultBackendService } from '../service/default-backend.service'
 import {
   AuthenticationResult,
   EventMessage,
@@ -18,10 +19,11 @@ import { filter } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   loginDisplay = false;
-
+  
   constructor(
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService
+    private msalBroadcastService: MsalBroadcastService,
+    private mssgService :  DefaultBackendService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,14 @@ export class HomeComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
+  }
+
+  getData(alertas:boolean){
+
+    this.mssgService.getData(alertas).subscribe((data)=>{
+      console.log(data)
+    })
+
   }
 
   setLoginDisplay() {

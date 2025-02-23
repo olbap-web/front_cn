@@ -4,6 +4,7 @@
     
     <p>Logeate para ver información importante!.</p>
 </div>
+
 }
 
 @if (loginDisplay) {
@@ -17,4 +18,24 @@
 
 
 </div>
+
+<div class="container">
+    <ul class="" *ngIf="senales.length > 0" >
+        <h1>Señales</h1>
+        <li *ngFor=" let senal of senales">
+            {{senal}}
+        </li>           
+    </ul>
+
+    <ul class="" *ngIf="alertas.length > 0" >
+        <h1>Alertas</h1>
+        <li *ngFor=" let alerta of alertas">
+                {{alerta}}
+        </li>        
+    </ul>
+
+</div>
+
+
+
 }

@@ -19,6 +19,10 @@ import { filter } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   loginDisplay = false;
+
+  alertas : any = [];
+  senales : any = [];
+
   
   constructor(
     private authService: MsalService,
@@ -49,7 +53,15 @@ export class HomeComponent implements OnInit {
   getData(alertas:boolean){
 
     this.mssgService.getData(alertas).subscribe((data)=>{
-      console.log(data)
+      // console.log(data)
+
+      if(alertas){
+        this.alertas = data;
+        this.senales = [];
+        return
+      }
+      this.senales = data;
+      this.alertas = [];
     })
 
   }
